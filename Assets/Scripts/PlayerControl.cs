@@ -51,6 +51,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _hands;
     [SerializeField] private Transform _grabedObject;
 
+    //Vida
+    [SerializeField] private float _maxHealth = 10;
+    [SerializeField] private float _currentHealth;
+
+    public bool canMove = true;
+
+
 
     void Awake()
     {
@@ -69,7 +76,8 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        
+        _currentHealth = _maxHealth;
+        //_healthBar.fillAmount = _maxHealth;
     }
 
     // Update is called once per frame
@@ -81,44 +89,46 @@ public class PlayerController : MonoBehaviour
         // MovimientoCutre();
         //Movimiento2();
 
-
-        if (_aimAction.IsInProgress())
+        if (canMove)
         {
-            AimMovement();
-        }
-        else
-        {
-            Movement();
-        }
 
-        if (_jumpAction.WasPressedThisFrame() && IsGrounded())
-        {
-            Jump();
-        }
-        Gravity();
+            if (_aimAction.IsInProgress())
+            {
+                AimMovement();
+            }
+            else
+            {
+                Movement();
+            }
 
-        if (_dashAction.WasPressedThisFrame())
-        {
-            Dash();
-        }
+            if (_jumpAction.WasPressedThisFrame() && IsGrounded())
+            {
+                Jump();
+            }
+            Gravity();
 
-        if (_aimAction.WasPerformedThisFrame())
-        {
-            Attack();
-        }
+            if (_dashAction.WasPressedThisFrame())
+            {
+                Dash();
+            }
 
-        if (_grabAction.WasPerformedThisFrame())
-        {
-            GrabObject();
-        }
+            if (_aimAction.WasPerformedThisFrame())
+            {
+                Attack();
+            }
 
-        if (_throwAction.WasPerformedThisFrame())
-        {
-            //Throw();
-            RayTest();
-        }
+            if (_grabAction.WasPerformedThisFrame())
+            {
+                GrabObject();
+            }
 
-        
+            if (_throwAction.WasPerformedThisFrame())
+            {
+                //Throw();
+                RayTest();
+            }
+
+        }
 
     }
     
@@ -170,7 +180,6 @@ public class PlayerController : MonoBehaviour
 
     void AimMovement()
     {
-
         Vector3 direction = new Vector3(_moveInput.x, 0, _moveInput.y);
 
         _animator.SetFloat("Horizontal", _moveInput.x);
@@ -185,13 +194,8 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
 
             _controller.Move(moveDirection.normalized * _movementSpeed * Time.deltaTime);
-        }
-        
-        
+        }  
     }
-
-        
-
     
     void Jump()
     {
@@ -209,6 +213,37 @@ public class PlayerController : MonoBehaviour
         _controller.Move(_playerGravity * Time.deltaTime);
 
         _playerGravity.z = 5;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        _currentHealth -= amount;
+        _currentHealth = Mathf.Max(_currentHealth, 0);
+        //_healthBar.fillAmount = _currentHealth / _maxHealth;
+        //_audioSource.PlayOneShot(_damage);
+        Debug.Log($"Player took {amount} damage. Health now: {_currentHealth}");
+        
+        if (_currentHealth <= 0)
+        {
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        Debug.Log("Muerto");
+        _animator.SetTrigger("IsDeath");
+        canMove = false;
+        
+        //_audioSource.PlayOneShot(deathSFX);
+        //_boxCollider.enabled = false;
+
+        //inputHorizontal = 0;
+        
+        //_rigidBody.gravityScale = 0;
+        
+        Game_Manager.instance.isPlaying = false;
+        
     }
 
     void Gravity()
