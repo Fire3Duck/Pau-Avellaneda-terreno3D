@@ -232,3 +232,11 @@ Received Import Request.
 Start importing Assets/Icon.png using Guid(4a6286863f8c4f64287660947635784e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8159ded699db44d110067d779f88deee') in 0.058701 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
+========================================================================
+Received Import Request.
+  Time since last request: 802.903760 seconds.
+  path: Assets/Camera MiniMapa.prefab
+  artifactKey: Guid(633f558dfe8702949ad2fb3cd06bc76b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Camera MiniMapa.prefab using Guid(633f558dfe8702949ad2fb3cd06bc76b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'da255b96e6031149b3c057fc77f08848') in 0.0093596 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
