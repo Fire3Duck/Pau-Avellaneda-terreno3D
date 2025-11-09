@@ -338,3 +338,4 @@ Cmd: compileSnippet
   error: 1 plat 28 at Assets/Conifers [BOTD]/Render Pipeline Support/Built-in RP/CTI Runtime Components/Shaders/CTI_LOD_Bark_Array_301.shader(207): 'UNITY_PASS_SHADOWCASTER': macro redefinition. Previous definition found at Assets/Conifers [BOTD]/Render Pipeline Support/Built-in RP/CTI Runtime Components/Shaders/CTI_LOD_Bark_Array_301.shader:20.
  ok=1 outsize=694
 
+Cmd: shutdown
