@@ -242,7 +242,7 @@ public class PlayerController : MonoBehaviour
         
         //_rigidBody.gravityScale = 0;
         
-        Game_Manager.instance.isPlaying = false;
+        //Game_Manager.isPlaying = false;
         
     }
 

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class Game_Manager : MonoBehaviour
 {
-    public static PlayerData Instance;
+    //public static PlayerData Instance;
     public static Game_Manager instance { get; private set; } //sirve para acceder (get) sea publico y que cuando quiera cambiarlo es privado (private set)
     [SerializeField] public InputActionAsset playerInputs;
     
@@ -20,7 +20,7 @@ public class Game_Manager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        /*if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
@@ -29,6 +29,6 @@ public class Game_Manager : MonoBehaviour
             Instance = this;
         }
 
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);*/
     }
 }
