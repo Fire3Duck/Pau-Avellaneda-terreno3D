@@ -224,3 +224,7 @@ Received Import Request.
 Start importing Assets/UniversalRenderPipelineGlobalSettings.asset using Guid(06e2d1ed6337744479fb96a09cfcf81c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '76b1cd0003293184b1a445e3199b626b') in 0.2199758 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 116
 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
